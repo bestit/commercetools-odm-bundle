@@ -1,0 +1,44 @@
+services:
+    best_it.commercetools_odm.class_metadata_factory.default:
+        class: BestIt\CommercetoolsODM\Mapping\ClassMetadataFactory
+        public: false
+        arguments:
+            - '@best_it.commercetools_odm.mapping.annotations.driver'
+
+    best_it.commercetools_odm.event_manager.default:
+        class: Doctrine\Common\EventManager
+        public: false
+        shared: false
+
+    best_it.commercetools_odm.listener_invoker.default:
+        arguments: ['@best_it.commercetools_odm.event_manager']
+        class: BestIt\CommercetoolsODM\Event\ListenersInvoker
+        public: false
+
+    best_it.commercetools_odm.manager:
+        class: BestIt\CommercetoolsODM\DocumentManager
+        arguments:
+            - '@best_it.commercetools_odm.class_metadata_factory'
+            - '@best_it.commercetools_odm.client'
+            - '@best_it.commercetools_odm.query_helper'
+            - '@best_it.commercetools_odm.repository_factory'
+            - '@best_it.commercetools_odm.unit_of_work.factory'
+
+    best_it.commercetools_odm.mapping.annotations.driver.default:
+        class: BestIt\CommercetoolsODM\Mapping\Driver\AnnotationDriver
+        arguments: [ '@annotation_reader' ]
+
+    best_it.commercetools_odm.query_helper.default:
+        class: Commercetools\Commons\Helper\QueryHelper
+
+    best_it.commercetools_odm.repository_factory.default:
+        class: BestIt\CommercetoolsODM\RepositoryFactory
+        public: false
+
+    best_it.commrecetools_odm.unit_of_work.factory.default:
+        class: BestIt\CommercetoolsODM\UnitOfWorkFactory
+        public: false
+        arguments:
+            - '@best_it.commercetools_odm.event_manager'
+            - '@best_it.commercetools_odm.listener_invoker'
+
