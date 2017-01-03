@@ -1,4 +1,12 @@
 services:
+    best_it.commercetools_odm.action_builder.factory.default:
+        class: BestIt\CommercetoolsODM\ActionBuilder\ActionBuilderFactory
+        arguments: ['@cache.system']
+
+    best_it.commercetools_odm.action_builder.processor.default:
+        class: BestIt\CommercetoolsODM\ActionBuilder\ActionBuilderComposite
+        arguments: ['@best_it.commercetools_odm.action_builder.factory']
+
     best_it.commercetools_odm.class_metadata_factory.default:
         class: BestIt\CommercetoolsODM\Mapping\ClassMetadataFactory
         public: false
@@ -39,6 +47,7 @@ services:
         class: BestIt\CommercetoolsODM\UnitOfWorkFactory
         public: false
         arguments:
+            - '@best_it.commercetools_odm.action_builder.processor'
             - '@best_it.commercetools_odm.event_manager'
             - '@best_it.commercetools_odm.listener_invoker'
 

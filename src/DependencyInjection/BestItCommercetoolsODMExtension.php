@@ -36,6 +36,10 @@ class BestItCommercetoolsODMExtension extends Extension
             'best_it.commercetools_odm.listener_invoker' => 'best_it.commercetools_odm.listener_invoker.default',
             'best_it.commercetools_odm.query_helper' => 'best_it.commercetools_odm.query_helper.default',
             'best_it.commercetools_odm.repository_factory' => 'best_it.commercetools_odm.repository_factory.default',
+            'best_it.commercetools_odm.action_builder.factory' => 'best_it.commercetools_odm.action_builder.' .
+                'factory.default',
+            'best_it.commercetools_odm.action_builder.processor' => 'best_it.commercetools_odm.action_builder.' .
+                'processor.default',
             'best_it.commercetools_odm.class_metadata_factory' =>
                 'best_it.commercetools_odm.class_metadata_factory.default',
             'best_it.commercetools_odm.mapping.annotations.driver' =>
