@@ -31,6 +31,10 @@ class Configuration implements ConfigurationInterface
                     ->isRequired()
                     ->cannotBeEmpty()
                 ->end()
+                ->scalarNode('pool_service_id')
+                    ->info('Please provide the service id for your commercetools request async pool.')
+                    ->cannotBeEmpty()
+                ->end()
             ->end();
 
         return $builder;

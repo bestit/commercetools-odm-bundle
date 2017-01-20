@@ -41,6 +41,8 @@ services:
 
     best_it.commercetools_odm.repository_factory.default:
         class: BestIt\CommercetoolsODM\RepositoryFactory
+        arguments:
+            - '@?best_it.commercetools_odm.request_pool'
         public: false
 
     best_it.commrecetools_odm.unit_of_work.factory.default:

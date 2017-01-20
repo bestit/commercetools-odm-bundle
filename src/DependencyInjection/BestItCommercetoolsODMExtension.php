@@ -31,6 +31,10 @@ class BestItCommercetoolsODMExtension extends Extension
 
         $container->setAlias('best_it.commercetools_odm.client', $config['client_service_id']);
 
+        if (@$config['pool_service_id']) {
+            $container->setAlias('best_it.commercetools_odm.request_pool', $config['pool_service_id']);
+        }
+
         $aliasMap = [
             'best_it.commercetools_odm.event_manager' => 'best_it.commercetools_odm.event_manager.default',
             'best_it.commercetools_odm.listener_invoker' => 'best_it.commercetools_odm.listener_invoker.default',
@@ -53,3 +57,4 @@ class BestItCommercetoolsODMExtension extends Extension
         });
     }
 }
+
