@@ -2,6 +2,8 @@
 
 namespace BestIt\CommercetoolsODMBundle;
 
+use BestIt\CommercetoolsODMBundle\DependencyInjection\Compiler\EventListenerPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -12,4 +14,12 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class BestItCommercetoolsODMBundle extends Bundle
 {
+    /**
+     * Registed the compiler pass.
+     * @param ContainerBuilder $container
+     */
+    public function build(ContainerBuilder $container)
+    {
+        $container->addCompilerPass(new EventListenerPass());
+    }
 }
