@@ -12,12 +12,6 @@
     "name": "bestit/commercetools-odm-bundle",
     "description": "Makes the commercetools database accessible with the doctrine commons api.",
     "type": "lib",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url":  "git@bitbucket.org:best-it/commercetools-odm.git"
-        }
-    ],
     "require": {
         "php": "^7.0",
         "bestit/commercetools-odm": "dev-master"
