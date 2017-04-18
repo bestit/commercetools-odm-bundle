@@ -16,7 +16,6 @@ services:
     best_it.commercetools_odm.event_manager.default:
         class: Doctrine\Common\EventManager
         public: false
-        shared: false
 
     best_it.commercetools_odm.listener_invoker.default:
         arguments: ['@best_it.commercetools_odm.event_manager']
