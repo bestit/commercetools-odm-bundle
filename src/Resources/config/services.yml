@@ -30,6 +30,8 @@ services:
             - '@best_it.commercetools_odm.query_helper'
             - '@best_it.commercetools_odm.repository_factory'
             - '@best_it.commercetools_odm.unit_of_work.factory'
+        calls:
+            - [setLogger, ['@?best_it.commercetools_odm.logger']]
 
     best_it.commercetools_odm.mapping.annotations.driver.default:
         class: BestIt\CommercetoolsODM\Mapping\Driver\AnnotationDriver
@@ -51,4 +53,5 @@ services:
             - '@best_it.commercetools_odm.action_builder.processor'
             - '@best_it.commercetools_odm.event_manager'
             - '@best_it.commercetools_odm.listener_invoker'
-
+        calls:
+            - [setLogger, ['@?best_it.commercetools_odm.logger']]

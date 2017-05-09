@@ -55,6 +55,10 @@ class BestItCommercetoolsODMExtension extends Extension
         array_walk($aliasMap, function (string $original, string $alias) use ($container) {
             $container->setAlias($alias, $original);
         });
+
+        if (@$config['logger_service_id']) {
+            $container->setAlias('best_it.commercetools_odm.logger', $config['logger_service_id']);
+        }
     }
 }
 
