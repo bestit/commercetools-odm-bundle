@@ -6,6 +6,7 @@ use BestIt\CommercetoolsODM\ActionBuilder\ActionBuilderComposite;
 use BestIt\CommercetoolsODM\ActionBuilder\ActionBuilderFactory;
 use BestIt\CommercetoolsODM\DocumentManager;
 use BestIt\CommercetoolsODM\Event\ListenersInvoker;
+use BestIt\CommercetoolsODM\Filter\FilterManager;
 use BestIt\CommercetoolsODM\Mapping\ClassMetadataFactory;
 use BestIt\CommercetoolsODM\Mapping\Driver\AnnotationDriver;
 use BestIt\CommercetoolsODM\RepositoryFactory;
@@ -65,6 +66,7 @@ class BestItCommercetoolsODMExtensionTest extends AbstractExtensionTestCase
             ['best_it.commercetools_odm.repository_factory.default', RepositoryFactory::class],
             ['best_it.commercetools_odm.unit_of_work.factory', UnitOfWorkFactory::class],
             ['best_it.commrecetools_odm.unit_of_work.factory.default', UnitOfWorkFactory::class],
+            ['best_it.commercetools_odm.filter.filter_manager', FilterManager::class]
         ];
     }
 
