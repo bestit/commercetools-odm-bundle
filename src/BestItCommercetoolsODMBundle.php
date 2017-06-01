@@ -3,6 +3,7 @@
 namespace BestIt\CommercetoolsODMBundle;
 
 use BestIt\CommercetoolsODMBundle\DependencyInjection\Compiler\EventListenerPass;
+use BestIt\CommercetoolsODMBundle\DependencyInjection\Compiler\FilterPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -21,5 +22,6 @@ class BestItCommercetoolsODMBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         $container->addCompilerPass(new EventListenerPass());
+        $container->addCompilerPass(new FilterPass());
     }
 }

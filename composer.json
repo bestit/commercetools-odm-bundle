@@ -14,7 +14,7 @@
     "type": "lib",
     "require": {
         "php": "^7.0",
-        "bestit/commercetools-odm": "dev-master",
+        "bestit/commercetools-odm": "^0.24",
         "symfony/symfony": "^3.1"
     },
     "require-dev": {

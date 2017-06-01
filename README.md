@@ -82,3 +82,57 @@ services:
 ### Services
 
 The service _best_it.commercetools_odm.manager_ provices you with an extended _Doctrine\Common\Persistence\ObjectManager_.
+
+**the method of the service should match the event name.**
+
+### Filters
+
+You can add multiple filters to apply on requests. Just create one filter, implement the _FilterInterface_ and tag the service with _best_it_commercetools_odm.filter_.
+The filter get the raw created request and will be applied just before the request will be send.
+
+Example:
+```php
+// ProductFilter.php
+class ProductFilter implements FilterInterface
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function getKey()
+    {
+        return 'product';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function apply($request)
+    {
+        $request->setExpands(['masterVariant.attributes[*].value', 'productType', 'categories[*].ancestors[*]']);
+        
+        $request->channel('xyz');
+        $request->currency('EUR');
+    }
+}
+```
+
+```yaml
+# app/config/services.yml
+services:
+    app.filter.product_filter:
+        class: AppBundle\Filter\ProductFilter
+        tags:
+            - { name: best_it_commercetools_odm.filter }
+```
+
+Now you can apply the one or more filter whenever you want:
+
+```yml
+    app.repository.product_projection:
+        class: BestIt\CommercetoolsODM\Model\ProductProjectionRepository
+        factory: ["@best_it.commercetools_odm.manager", getRepository]
+        arguments:
+            - Commercetools\Core\Model\Product\ProductProjection
+        calls:
+            - [filter, ['projection', 'projection-categories']]
+```

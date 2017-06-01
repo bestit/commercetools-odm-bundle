@@ -17,6 +17,9 @@ services:
         class: Doctrine\Common\EventManager
         public: false
 
+    best_it.commercetools_odm.filter.filter_manager:
+        class: BestIt\CommercetoolsODM\Filter\FilterManager
+
     best_it.commercetools_odm.listener_invoker.default:
         arguments: ['@best_it.commercetools_odm.event_manager']
         class: BestIt\CommercetoolsODM\Event\ListenersInvoker
@@ -43,6 +46,7 @@ services:
     best_it.commercetools_odm.repository_factory.default:
         class: BestIt\CommercetoolsODM\RepositoryFactory
         arguments:
+            - '@best_it.commercetools_odm.filter.filter_manager'
             - '@?best_it.commercetools_odm.request_pool'
         public: false
 
