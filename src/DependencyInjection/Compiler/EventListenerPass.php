@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace BestIt\CommercetoolsODMBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -8,16 +10,16 @@ use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * Adds the events to the event manager.
+ *
  * @author blane <lange@bestit-online.de>
- * @package BestIt\CommercetoolsODMBundle
- * @subpackage DependencyInjection\Compiler
- * @version $id$
+ * @package BestIt\CommercetoolsODMBundle\DependencyInjection\Compiler
  */
 class EventListenerPass implements CompilerPassInterface
 {
     /**
      * Adds the listeners.
-     * @param ContainerBuilder $container
+     *
+     * @param ContainerBuilder $container The symfony service container.
      */
     public function process(ContainerBuilder $container)
     {
@@ -28,7 +30,6 @@ class EventListenerPass implements CompilerPassInterface
                 foreach ($tags as $tag) {
                     if (@$tag['event']) {
                         $definition->addMethodCall('addEventListener', [$tag['event'], new Reference($id)]);
-                        break;
                     }
                 }
             }
