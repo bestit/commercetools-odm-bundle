@@ -15,7 +15,8 @@
     "require": {
         "php": "^7.0",
         "bestit/commercetools-odm": "dev-master",
-        "symfony/symfony": "^3.1"
+        "symfony/dependency-injection": "^3.1",
+        "symfony/yaml": "^3.1"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^2.6",
@@ -29,5 +30,6 @@
             "email": "lange@bestit-online.de"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
