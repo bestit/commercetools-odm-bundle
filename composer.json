@@ -15,8 +15,9 @@
     "require": {
         "php": "^7.0",
         "bestit/commercetools-odm": "^0.49",
-        "symfony/dependency-injection": "^3.1",
-        "symfony/yaml": "^3.1"
+        "symfony/dependency-injection": "^3.1 || ^4.0",
+        "symfony/yaml": "^3.1 || ^4.0",
+        "symfony/http-kernel": "^3.1 || ^4.0"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^2.6",
