@@ -53,6 +53,8 @@ services:
             - '@best_it.commercetools_odm.filter.filter_manager'
             - '@?best_it.commercetools_odm.request_pool'
         public: false
+        calls:
+            - [setLogger, ['@?best_it.commercetools_odm.logger']]
 
     best_it.commrecetools_odm.unit_of_work.factory.default:
         class: BestIt\CommercetoolsODM\UnitOfWorkFactory
