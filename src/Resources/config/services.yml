@@ -1,4 +1,8 @@
 services:
+    # Autowire alias
+    BestIt\CommercetoolsODM\Filter\FilterManagerInterface: '@best_it.commercetools_odm.filter.filter_manager'
+    BestIt\CommercetoolsODM\DocumentManagerInterface: '@best_it.commercetools_odm.manager'
+
     best_it.commercetools_odm.action_builder.factory.default:
         class: BestIt\CommercetoolsODM\ActionBuilder\ActionBuilderFactory
         arguments: ['@cache.system']
