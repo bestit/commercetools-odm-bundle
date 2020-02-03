@@ -58,6 +58,20 @@ bestit_commercetools_odm:
     pool_service_id:      ~
 ```
 
+This bundle ships a client factory which you can use to create a client. Example:
+```
+services:
+    Commercetools\Core\Client:
+        factory: 'BestIt\CommercetoolsODMBundle\Factory\ClientFactory:create'
+        arguments:
+            - {client_id: '%env(COMMERCETOOLS_CLIENT_ID)%', client_secret: '%env(COMMERCETOOLS_CLIENT_SECRET)%', project: '%env(COMMERCETOOLS_PROJECT)%', scope: ['manage_project'] }
+            - {locale: 'de', languages: ['de'] }
+
+    BestIt\CommercetoolsODMBundle\Factory\ClientFactory:
+        class: BestIt\CommercetoolsODMBundle\Factory\ClientFactory
+        arguments: ['@cache.app', '@logger']
+```
+
 ## Usage
 
 ### Event Listener with the sercice container
