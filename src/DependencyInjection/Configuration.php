@@ -2,6 +2,8 @@
 
 namespace BestIt\CommercetoolsODMBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
+use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -20,9 +22,8 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $builder = new TreeBuilder();
-
-        $rootNode = $builder->root('bestit_commercetools_odm');
+        $builder = new TreeBuilder('bestit_commercetools_odm');
+        $rootNode = $this->getRootNode($builder, 'bestit_commercetools_odm');
 
         $rootNode
             ->children()
@@ -41,5 +42,22 @@ class Configuration implements ConfigurationInterface
             ->end();
 
         return $builder;
+    }
+
+    /**
+     * BC layer for symfony/config 4.1 and older
+     *
+     * @param TreeBuilder $treeBuilder
+     * @param $name
+     *
+     * @return ArrayNodeDefinition|NodeDefinition
+     */
+    private function getRootNode(TreeBuilder $treeBuilder, $name)
+    {
+        if (!method_exists($treeBuilder, 'getRootNode')) {
+            return $treeBuilder->root($name);
+        }
+
+        return $treeBuilder->getRootNode();
     }
 }

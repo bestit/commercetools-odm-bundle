@@ -102,7 +102,7 @@ class BestItCommercetoolsODMExtensionTest extends AbstractExtensionTestCase
      * Sets up the test.
      * @return void
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
