@@ -20,11 +20,10 @@ use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 
 /**
  * Class BestItCommercetoolsODMExtensionTest
+ *
  * @author blange <lange@bestit-online.de>
  * @category Tests
- * @package BestIt\CommercetoolsODMBundle
- * @subpackage DependencyInjection
- * @version $id$
+ * @package BestIt\CommercetoolsODMBundle\Tests\DependencyInjection
  */
 class BestItCommercetoolsODMExtensionTest extends AbstractExtensionTestCase
 {
@@ -41,6 +40,7 @@ class BestItCommercetoolsODMExtensionTest extends AbstractExtensionTestCase
 
     /**
      * Returns assertions for checking declared services.
+     *
      * @return array
      */
     public function getDeclaredServices(): array
@@ -72,6 +72,7 @@ class BestItCommercetoolsODMExtensionTest extends AbstractExtensionTestCase
 
     /**
      * Returns the minimal configuration.
+     *
      * @return array
      */
     protected function getMinimalConfiguration(): array
@@ -83,6 +84,7 @@ class BestItCommercetoolsODMExtensionTest extends AbstractExtensionTestCase
 
     /**
      * Fakes a logger service.
+     *
      * @return void
      */
     private function mockLoggerService()
@@ -92,7 +94,8 @@ class BestItCommercetoolsODMExtensionTest extends AbstractExtensionTestCase
         $this->load(['logger_service_id' => 'app.logger']);
 
         $this->assertContainerBuilderHasAlias(
-            'best_it.commercetools_odm.logger', 'app.logger'
+            'best_it.commercetools_odm.logger',
+            'app.logger'
         );
 
         $this->assertContainerBuilderHasService('app.logger', NullLogger::class);
@@ -100,9 +103,10 @@ class BestItCommercetoolsODMExtensionTest extends AbstractExtensionTestCase
 
     /**
      * Sets up the test.
+     *
      * @return void
      */
-    protected function setUp(): void
+    protected function setUp()
     {
         parent::setUp();
 
@@ -111,7 +115,9 @@ class BestItCommercetoolsODMExtensionTest extends AbstractExtensionTestCase
 
     /**
      * Checks if a declared service exists.
+     *
      * @dataProvider getDeclaredServices
+     *
      * @param string $serviceId
      * @param string $serviceClass
      * @param string $tag
@@ -127,6 +133,7 @@ class BestItCommercetoolsODMExtensionTest extends AbstractExtensionTestCase
 
     /**
      * Checks if there is no logger alias.
+     *
      * @return void
      */
     public function testLoggerAliasNoConfig()
@@ -136,6 +143,7 @@ class BestItCommercetoolsODMExtensionTest extends AbstractExtensionTestCase
 
     /**
      * Checks if there is an logger alias.
+     *
      * @return void
      */
     public function testLoggerAliasWithConfig()
@@ -145,6 +153,7 @@ class BestItCommercetoolsODMExtensionTest extends AbstractExtensionTestCase
 
     /**
      * Checks if the service is correctly loaded and registered, even with a logger.
+     *
      * @return void
      */
     public function testDocumentManagerServiceWithLoggerConfig()
@@ -156,6 +165,7 @@ class BestItCommercetoolsODMExtensionTest extends AbstractExtensionTestCase
 
     /**
      * Checks if the service is correctly loaded and registered, even with a logger.
+     *
      * @return void
      */
     public function testUnitOfWorkFactoryServiceWithLoggerConfig()

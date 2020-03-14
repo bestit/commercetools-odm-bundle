@@ -9,14 +9,15 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * Class BestItCommercetoolsODMBundle.
+ *
  * @author lange <lange@bestit-online.de>
  * @package BestIt\CommercetoolsODMBundle
- * @version $id$
  */
 class BestItCommercetoolsODMBundle extends Bundle
 {
     /**
-     * Registed the compiler pass.
+     * Registers the compiler pass.
+     *
      * @param ContainerBuilder $container
      */
     public function build(ContainerBuilder $container)

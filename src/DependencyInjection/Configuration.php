@@ -9,15 +9,15 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
  * Configuration class for this bundle.
+ *
  * @author Bjoern Lange <lange@bestit-online.de>
- * @package BestIt\CommercetoolsODMBundle
- * @subpackage DependencyInjection
- * @version $id$
+ * @package BestIt\CommercetoolsODMBundle\DependencyInjection
  */
 class Configuration implements ConfigurationInterface
 {
     /**
      * Parses the config.
+     *
      * @return TreeBuilder
      */
     public function getConfigTreeBuilder()
@@ -48,11 +48,11 @@ class Configuration implements ConfigurationInterface
      * BC layer for symfony/config 4.1 and older
      *
      * @param TreeBuilder $treeBuilder
-     * @param $name
+     * @param string $name
      *
      * @return ArrayNodeDefinition|NodeDefinition
      */
-    private function getRootNode(TreeBuilder $treeBuilder, $name)
+    private function getRootNode(TreeBuilder $treeBuilder, string $name)
     {
         if (!method_exists($treeBuilder, 'getRootNode')) {
             return $treeBuilder->root($name);

@@ -9,17 +9,18 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
  * Loads the config for the commercetools odm bundle.
+ *
  * @author Bjoern Lange <lange@bestit-online.de>
- * @package BestIt\CommercetoolsODMBundle
- * @subpackage DependencyInjection
- * @version $id$
+ * @package BestIt\CommercetoolsODMBundle\DependencyInjection
  */
 class BestItCommercetoolsODMExtension extends Extension
 {
     /**
      * Loads the bundle config.
+     *
      * @param array $configs
      * @param ContainerBuilder $container
+     *
      * @return void
      */
     public function load(array $configs, ContainerBuilder $container)
@@ -61,4 +62,3 @@ class BestItCommercetoolsODMExtension extends Extension
         }
     }
 }
-

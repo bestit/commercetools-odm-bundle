@@ -14,7 +14,7 @@ use Symfony\Component\ErrorHandler\BufferingLogger;
  * Test the client factory
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package App\Tests\CommerceTools
+ * @package BestIt\CommercetoolsODMBundle\Tests\DependencyInjection
  */
 class ClientFactoryTest extends TestCase
 {
@@ -24,7 +24,7 @@ class ClientFactoryTest extends TestCase
      *
      * @return void
      */
-    public function testCreate(): void
+    public function testCreate()
     {
         $factory = new ClientFactory(
             $cache = $this->createMock(CacheItemPoolInterface::class),
