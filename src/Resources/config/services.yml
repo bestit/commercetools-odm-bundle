@@ -35,6 +35,7 @@ services:
             - '@best_it.commercetools_odm.class_metadata_factory'
             - '@best_it.commercetools_odm.client'
             - '@best_it.commercetools_odm.query_helper'
+            - '@best_it.commercetools_odm.generator.query_helper'
             - '@best_it.commercetools_odm.repository_factory'
             - '@best_it.commercetools_odm.unit_of_work.factory'
         calls:
@@ -46,6 +47,9 @@ services:
 
     best_it.commercetools_odm.query_helper.default:
         class: Commercetools\Commons\Helper\QueryHelper
+
+    best_it.commercetools_odm.generator.query_helper:
+        class: BestIt\CommercetoolsODM\Helper\GeneratorQueryHelper
 
     best_it.commercetools_odm.repository_factory.default:
         class: BestIt\CommercetoolsODM\RepositoryFactory
