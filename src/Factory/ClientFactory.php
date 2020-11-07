@@ -21,24 +21,24 @@ class ClientFactory
     /**
      * The psr logger
      *
-     * @var LoggerInterface
+     * @var LoggerInterface|null
      */
     private $logger;
 
     /**
      * The cache
      *
-     * @var CacheItemPoolInterface
+     * @var CacheItemPoolInterface|null
      */
     private $cache;
 
     /**
      * ClientFactory constructor.
      *
-     * @param CacheItemPoolInterface $cache
-     * @param LoggerInterface $logger
+     * @param CacheItemPoolInterface|null $cache
+     * @param LoggerInterface|null $logger
      */
-    public function __construct(CacheItemPoolInterface $cache, LoggerInterface $logger)
+    public function __construct(?CacheItemPoolInterface $cache = null, ?LoggerInterface $logger = null)
     {
         $this->logger = $logger;
         $this->cache = $cache;
@@ -61,6 +61,18 @@ class ClientFactory
 
         $config = Config::fromArray($commerceToolsCredentials);
         $config->setContext($context);
+
+        if (!$this->logger && !$this->cache) {
+            return Client::ofConfig($config);
+        }
+
+        if ($this->logger && !$this->cache) {
+            return Client::ofConfigAndLogger($config, $this->logger);
+        }
+
+        if (!$this->logger && $this->cache) {
+            return Client::ofConfigAndCache($config, $this->cache);
+        }
 
         return Client::ofConfigCacheAndLogger($config, $this->cache, $this->logger);
     }
