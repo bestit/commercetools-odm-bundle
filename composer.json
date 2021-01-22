@@ -14,7 +14,7 @@
     "type": "lib",
     "require": {
         "php": "^7.2.5",
-        "bestit/commercetools-odm": "^1.0",
+        "bestit/commercetools-odm": "dev-feature/update-sdk",
         "symfony/dependency-injection": "^3.1 || ^4.0 || ^5.0",
         "symfony/yaml": "^3.1 || ^4.0 || ^5.0",
         "symfony/http-kernel": "^3.1 || ^4.0 || ^5.0"
